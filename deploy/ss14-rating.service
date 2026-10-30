@@ -1,0 +1,25 @@
+[Unit]
+Description=SS14 Social Rating Discord Bot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ss14-rating
+Group=ss14-rating
+WorkingDirectory=/opt/ss14-social-rating
+EnvironmentFile=/opt/ss14-social-rating/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/ss14-social-rating/.venv/bin/python -m bot.main
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=45
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/ss14-social-rating/data
+
+[Install]
+WantedBy=multi-user.target
