@@ -1,0 +1,6 @@
+discord.py>=2.6,<3
+SQLAlchemy>=2.0,<2.1
+aiosqlite>=0.21,<1
+alembic>=1.16,<2
+pydantic-settings>=2.10,<3
+tzdata>=2025.2

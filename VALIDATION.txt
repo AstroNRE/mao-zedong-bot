@@ -1,0 +1,23 @@
+SS14 Social Rating Bot — local validation
+
+Python3.12, discord.py2.7.1. Exact dependencies: requirements.lock.
+Automated checks cover:
+- Rating800 opening, fixed daily+25, punishment−50 and legacy undo amounts.
+- Separate credits0/10/20/30/50, class before rating increase, zero-event audit.
+- Atomic ledgers/outbox, idempotency, concurrent writes, rollback, restart.
+- Multi-guild physical data isolation, Administrator setup, exact opt-in time.
+- Private input/auth errors, public successful give/punish/undo receipts.
+- Per-guild leaderboard, pagination, class thresholds, recovery, DST.
+- Migrations, SQLite backup/integrity, explicit opt-in legacy import.
+
+Legacy import is disabled by default. Operators may explicitly provide
+LEGACY_GUILD_ID for the original owner of a legacy database; it must match
+GUILD_ID. No production/test server identity is embedded in source code.
+
+Temporary Discord testing confirmed connection, command synchronization,
+server setup and command responses. The temporary bot is stopped.
+Daily scheduled credit delivery has unit coverage but was not observed live.
+Runtime credentials, databases, logs, backups and private test metadata
+are not included in the public source deliverable.
+
+Final validation: 189 tests passed; Ruff, Alembic schema check and diff check passed.
